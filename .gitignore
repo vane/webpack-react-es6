@@ -1,0 +1,15 @@
+*~
+.DS_Store
+
+#IntelliJ
+.idea
+*.iml
+
+#Python
+*.pyc
+
+#ECMAScript
+node_modules
+
+#Project
+static/es6

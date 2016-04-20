@@ -1,0 +1,1 @@
+import App from './es6/App.jsx'
