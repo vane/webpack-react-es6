@@ -11,6 +11,6 @@ Uglify is commented out.
 
 ### Steps to run code:
 
-1. npm init
+1. npm install
 2. run webpack-dev-server 
-2. go to [http://localhost:8080/static/](http://localhost:8080/static/) to see hello world message
+3. go to [http://localhost:8080/static/](http://localhost:8080/static/) to see hello world message
