@@ -1,4 +1,4 @@
-## Start point for reactjs / webpack / babeljs / es6
+## Start point for reactjs 16 / webpack 4 / babeljs 7 / es6 / eslint 7 / less 3
 
 Just hello world using webpack to compile reactjs class using babeljs.
 
@@ -12,5 +12,5 @@ Uglify is commented out.
 ### Steps to run code:
 
 1. npm install
-2. run webpack-dev-server 
-3. go to [http://localhost:8080/static/](http://localhost:8080/static/) to see hello world message
+2. npm run dev 
+3. go to [http://localhost:9000/](http://localhost:9000/) to see hello world message

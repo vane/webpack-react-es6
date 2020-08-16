@@ -1,31 +1,50 @@
-var path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
+const Copy = require('copy-webpack-plugin');
+
+const mode = 'development'
 
 module.exports = {
-    entry: './main.js',
-    output: {
-        path: __dirname,
-        filename: './static/es6/bundle.js'
-        //filename: './static/es6/bundle.min.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    cacheDirectory: true,
-                    presets: ['react', 'es2015'],
-                    plugins: [
-                        'transform-decorators-legacy',
-                        'transform-class-properties',
-                    ]
-                }
-            }
-        ]
-    },
-    plugins: [
-        //new webpack.optimize.UglifyJsPlugin({minimize: true}),
-    ]
-};
+  mode,
+  entry: './src/app.jsx',
+  output: {
+    path: __dirname + '/static',
+    filename: 'app.js',
+  },
+  optimization: {
+    minimize: mode == 'development' ? false : true
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: __dirname + '/static',
+    compress: false,
+    port: 9000,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: ['babel-loader', 'eslint-loader'],
+      },
+      {
+        test: /\.(less|css)$/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        }, 'less-loader']
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    /*new Copy({
+      patterns: [
+        {from: 'assets', to: 'build/assets'},
+      ]
+    }),*/
+  ]
+}
